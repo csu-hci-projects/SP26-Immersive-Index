@@ -1,4 +1,4 @@
-Immersive Index project.
+Immersive Index Project
 
 Group Members: Samith Varma Nagaraju, Ritvik Ruttala, Ashby Deitz, Oliver Hamilton
 
