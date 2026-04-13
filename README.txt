@@ -2,8 +2,8 @@ Immersive Index Project
 
 Group Members: Samith Varma Nagaraju, Ritvik Ruttala, Ashby Deitz, Oliver Hamilton
 
-yt vid for scripts: https://youtu.be/kwjAf46-Euc 
-yt vid for demo: https://youtu.be/sbLUApfl3EE
+youtube video for scripts: https://youtu.be/kwjAf46-Euc 
+youtube video for demo: https://youtu.be/sbLUApfl3EE
 
 Overview:
 This project is a VR interactive environment that allows users to engage with books in a natural and immersive way. The main goal of the project is to allow users to pick up books, flip through pages, read content within the virtual space, and any other interactions within the context. This is to help simulate a real-world reading experience.
