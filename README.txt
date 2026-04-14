@@ -29,3 +29,5 @@ Controls:
 
 Notes:
 This is an early stage prototype of the final project. We only have core interaction mechanics set up, but will update the environment with more functionality and better user experience in the future.
+
+link to overleaf: https://www.overleaf.com/read/wffwsfgvcshq#ad1468
