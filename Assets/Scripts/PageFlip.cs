@@ -3,73 +3,59 @@ using UnityEngine;
 
 public class PageFlip : MonoBehaviour
 {
-    [HideInInspector] public bool isFlipped = false;
-
-    public float flipDuration = 0.4f;
-    public AnimationCurve flipCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    public float openDuration = 0.4f;
+    public AnimationCurve openCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     private bool _isAnimating = false;
+    private float _openAngle = 90f;
 
-    //Set initial "open book" layout
-    public void SetStartPosition(bool isRightPage)
+    // Call with isRightPage=true for +90°, false for -90°
+    public void Open(bool isRightPage)
     {
-        StopAllCoroutines();
-
-        float startY = isRightPage ? 90f : -90f;
-        transform.localEulerAngles = new Vector3(0, startY, 0);
-
-        isFlipped = false;
-        _isAnimating = false;
+        if (_isAnimating) return;
+        _openAngle = isRightPage ? 90f : -90f;
+        StartCoroutine(AnimateTo(_openAngle));
     }
 
-    public void ResetPosition()
+    public void Close()
     {
-        StopAllCoroutines();
+        if (_isAnimating) return;
+        StartCoroutine(AnimateTo(0f));
+    }
+
+    public void SetOpen(bool isRightPage)
+    {
+        _openAngle = isRightPage ? 90f : -90f;
+        transform.localEulerAngles = new Vector3(0, _openAngle, 0);
+    }
+
+    public void SetClosed()
+    {
         transform.localEulerAngles = Vector3.zero;
-
-        isFlipped = false;
-        _isAnimating = false;
     }
 
-    public void FlipForward()
-    {
-        if (_isAnimating || isFlipped) return;
-
-        StartCoroutine(AnimateFlip(180f)); // always rotate +180
-        isFlipped = true;
-    }
-
-    public void FlipBack()
-    {
-        if (_isAnimating || !isFlipped) return;
-
-        StartCoroutine(AnimateFlip(-180f)); // always rotate -180
-        isFlipped = false;
-    }
-
-    IEnumerator AnimateFlip(float deltaAngle)
+    IEnumerator AnimateTo(float targetAngle)
     {
         _isAnimating = true;
-
         float elapsed = 0f;
-        float startY = transform.localEulerAngles.y;
+        float startAngle = transform.localEulerAngles.y;
 
-        while (elapsed < flipDuration)
+        // Handle wrap around (e.g. 350° vs -10°)
+        if (startAngle > 180f) startAngle -= 360f;
+
+        while (elapsed < openDuration)
         {
             elapsed += Time.deltaTime;
-            float t = flipCurve.Evaluate(Mathf.Clamp01(elapsed / flipDuration));
-
-            float y = startY + (deltaAngle * t);
-
-            transform.localEulerAngles = new Vector3(0, y, 0);
-
+            float t = openCurve.Evaluate(Mathf.Clamp01(elapsed / openDuration));
+            transform.localEulerAngles = new Vector3(
+                0,
+                Mathf.Lerp(startAngle, targetAngle, t),
+                0
+            );
             yield return null;
         }
 
-        // Snap cleanly to final rotation
-        float finalY = startY + deltaAngle;
-        transform.localEulerAngles = new Vector3(0, finalY, 0);
-
+        transform.localEulerAngles = new Vector3(0, targetAngle, 0);
         _isAnimating = false;
     }
 }

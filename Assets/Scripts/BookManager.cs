@@ -7,19 +7,26 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 [RequireComponent(typeof(XRGrabInteractable))]
 public class BookManager : MonoBehaviour
 {
-    [Header("Pages (in order, front to back)")]
-    public PageFlip[] pages;
+    [Header("Spreads")]
+    public PageFlip[] spreadALeft;   // left pages of each spread
+    public PageFlip[] spreadARight;  // right pages of each spread
+
+    // Spread A = pages 1+2, Spread B = pages 3+4
+    public PageFlip spread1Left;   // Page 2
+    public PageFlip spread1Right;  // Page 1
+    public PageFlip spread2Left;   // Page 4
+    public PageFlip spread2Right;  // Page 3
 
     [Header("Open Animation")]
     public float openDelay = 0.3f;
-    public float pageStaggerDelay = 0.08f;
+    public float spreadDelay = 0.1f;
 
     [Header("Input")]
     public float triggerThreshold = 0.85f;
 
     private XRGrabInteractable _grab;
     private bool _isOpen = false;
-    private int _currentPage = 1;
+    private int _currentSpread = 1;  // 1 or 2
 
     private bool _rightWasPressed = false;
     private bool _leftWasPressed = false;
@@ -27,26 +34,22 @@ public class BookManager : MonoBehaviour
     void Awake()
     {
         _isOpen = false;
-        _currentPage = 1;
+        _currentSpread = 1;
 
         _grab = GetComponent<XRGrabInteractable>();
 
         if (_grab == null)
         {
-            Debug.LogError("BookManager: No XRGrabInteractable found on " + gameObject.name);
+            Debug.LogError("BookManager: No XRGrabInteractable found!");
             return;
         }
 
         _grab.selectEntered.AddListener(OnGrab);
         _grab.selectExited.AddListener(OnRelease);
 
-        foreach (var page in pages)
-        {
-            if (page == null)
-                Debug.LogError("BookManager: A page in the array is NULL!");
-            else
-                page.ResetPosition();
-        }
+        // Start fully closed
+        SetSpreadClosed(1);
+        SetSpreadClosed(2);
     }
 
     void OnDestroy()
@@ -68,33 +71,80 @@ public class BookManager : MonoBehaviour
     IEnumerator OpenBook()
     {
         _isOpen = true;
-        _currentPage = 1;
+        _currentSpread = 1;
 
         yield return new WaitForSeconds(openDelay);
 
-        // Page 1 fixed on right (+90°)
-        pages[0].SetStartPosition(true);
-        yield return new WaitForSeconds(pageStaggerDelay);
-
-        // Pages 2,3,4 all stack on left (-90°)
-        for (int i = 1; i < pages.Length; i++)
-        {
-            if (pages[i] == null) continue;
-            pages[i].SetStartPosition(false);
-            yield return new WaitForSeconds(pageStaggerDelay);
-        }
+        // Open spread 1, hide spread 2
+        ShowSpread(1);
+        HideSpread(2);
     }
 
     IEnumerator CloseBook()
     {
         _isOpen = false;
-        _currentPage = 1;
+        _currentSpread = 1;
 
-        for (int i = pages.Length - 1; i >= 0; i--)
+        // Close all pages
+        spread1Left.Close();
+        spread1Right.Close();
+        spread2Left.Close();
+        spread2Right.Close();
+
+        yield return null;
+    }
+
+    void ShowSpread(int spread)
+    {
+        if (spread == 1)
         {
-            if (pages[i] == null) continue;
-            pages[i].ResetPosition();
-            yield return new WaitForSeconds(pageStaggerDelay);
+            spread1Left.gameObject.SetActive(true);
+            spread1Right.gameObject.SetActive(true);
+            spread1Left.Open(false);   // left page = -90°
+            spread1Right.Open(true);   // right page = +90°
+        }
+        else
+        {
+            spread2Left.gameObject.SetActive(true);
+            spread2Right.gameObject.SetActive(true);
+            spread2Left.Open(false);
+            spread2Right.Open(true);
+        }
+    }
+
+    void HideSpread(int spread)
+    {
+        if (spread == 1)
+        {
+            spread1Left.SetClosed();
+            spread1Right.SetClosed();
+            spread1Left.gameObject.SetActive(false);
+            spread1Right.gameObject.SetActive(false);
+        }
+        else
+        {
+            spread2Left.SetClosed();
+            spread2Right.SetClosed();
+            spread2Left.gameObject.SetActive(false);
+            spread2Right.gameObject.SetActive(false);
+        }
+    }
+
+    void SetSpreadClosed(int spread)
+    {
+        if (spread == 1)
+        {
+            spread1Left.SetClosed();
+            spread1Right.SetClosed();
+            spread1Left.gameObject.SetActive(false);
+            spread1Right.gameObject.SetActive(false);
+        }
+        else
+        {
+            spread2Left.SetClosed();
+            spread2Right.SetClosed();
+            spread2Left.gameObject.SetActive(false);
+            spread2Right.gameObject.SetActive(false);
         }
     }
 
@@ -112,24 +162,26 @@ public class BookManager : MonoBehaviour
         bool rightPressed = right > triggerThreshold;
         bool leftPressed = left > triggerThreshold;
 
-        if (rightPressed && !_rightWasPressed) TurnPageForward();
+        if (rightPressed && !_rightWasPressed) NextSpread();
         _rightWasPressed = rightPressed;
 
-        if (leftPressed && !_leftWasPressed) TurnPageBack();
+        if (leftPressed && !_leftWasPressed) PrevSpread();
         _leftWasPressed = leftPressed;
     }
 
-    void TurnPageForward()
+    void NextSpread()
     {
-        if (_currentPage >= pages.Length) return;
-        pages[_currentPage].FlipForward();
-        _currentPage++;
+        if (_currentSpread >= 2) return;
+        HideSpread(_currentSpread);
+        _currentSpread++;
+        ShowSpread(_currentSpread);
     }
 
-    void TurnPageBack()
+    void PrevSpread()
     {
-        if (_currentPage <= 1) return;
-        _currentPage--;
-        pages[_currentPage].FlipBack();
+        if (_currentSpread <= 1) return;
+        HideSpread(_currentSpread);
+        _currentSpread--;
+        ShowSpread(_currentSpread);
     }
 }
