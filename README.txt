@@ -1,4 +1,4 @@
-#Immersive Index – VR Reading Experience
+# Immersive Index – VR Reading Experience
 
 ## Team Members
 - Samith Varma Nagaraju  
@@ -9,14 +9,14 @@
 ---
 
 ## Project Videos
-- **Demo Video:** https://youtu.be/sbLUApfl3EE  
-- **Programming / Code Walkthrough:** https://youtu.be/kwjAf46-Euc  
+- Demo Video: https://youtu.be/sbLUApfl3EE  
+- Programming / Code Walkthrough:** https://youtu.be/kwjAf46-Euc  
 
 ---
 
 ## Project Resources
-- **GitHub Repository:** https://github.com/csu-hci-projects/SP26-Immersive-Index
-- **Project Report (Overleaf):** https://www.overleaf.com/read/wffwsfgvcshq#ad1468  
+- GitHub Repository: https://github.com/csu-hci-projects/SP26-Immersive-Index
+- Project Report (Overleaf): https://www.overleaf.com/read/wffwsfgvcshq#ad1468  
 
 ---
 
@@ -42,18 +42,18 @@ The completed project includes:
 
 ## Controls / How to Use
 
-### VR Setup
-1. Launch the application in Unity or run the built executable.  
-2. Connect your VR headset (e.g., Oculus/Meta Quest or compatible device).  
-3. Ensure controllers are enabled.  
-
-### Interactions
-- **Grab Book:** Use grip/trigger to pick up the book
-- **Open Book:** While holding the book, press A on the right controller to open it
-- **Flip Pages:**  
-  - Controller trigger or joystick  
-  - Controller swipe gesture
-- **Read Content:** View text on pages rendered as images  
+  ### VR Setup
+  1. Launch the application in Unity or run the built executable.  
+  2. Connect your VR headset (e.g., Oculus/Meta Quest or compatible device).  
+  3. Ensure controllers are enabled.  
+  
+  ### Interactions
+  - Grab Book: Use grip/trigger to pick up the book
+  - Open Book: While holding the book, press A on the right controller to open it
+  - Flip Pages:  
+    - Controller trigger or joystick  
+    - Controller swipe gesture
+  - Read Content: View text on pages rendered as images  
 
 ---
 
@@ -67,15 +67,15 @@ The completed project includes:
 
 ## Challenges & Improvements
 
-### Challenges
-- Integrating VR input systems (controllers), but ultimately removed hand tracking as it proved to be difficult to implement.
-- Designing intuitive page interaction mechanics  
-- Optimizing readability of text in a VR environment  
-
-### Future Improvements
-- Improved animation effects for opening the book
-- Dynamic text rendering instead of static images  
-- Expanded environments and multiple books  
+  ### Challenges
+  - Integrating VR input systems (controllers), ultimately removed hand tracking as it proved to be difficult to implement.
+  - Designing intuitive page interaction and flipping mechanics  
+  - Optimizing readability of text in a VR environment  
+  
+  ### Future Improvements
+  - Improved animation effects for opening the book
+  - Dynamic text rendering instead of static images  
+  - Expanded environments and multiple books  
 
 ---
 
