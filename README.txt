@@ -1,33 +1,95 @@
-Immersive Index Project
+# Immersive Index – VR Reading Experience
 
-Group Members: Samith Varma Nagaraju, Ritvik Ruttala, Ashby Deitz, Oliver Hamilton
+## Team Members
+- Samith Varma Nagaraju  
+- Ritvik Ruttala  
+- Ashby Deitz  
+- Oliver Hamilton  
 
-youtube video for scripts: https://youtu.be/kwjAf46-Euc 
-youtube video for demo: https://youtu.be/sbLUApfl3EE
+---
 
-Overview:
-This project is a VR interactive environment that allows users to engage with books in a natural and immersive way. The main goal of the project is to allow users to pick up books, flip through pages, read content within the virtual space, and any other interactions within the context. This is to help simulate a real-world reading experience.
+## Project Videos
+- **Demo Video:** https://youtu.be/sbLUApfl3EE  
+- **Programming / Code Walkthrough:** https://youtu.be/kwjAf46-Euc  
 
-Current Progress (Checkpoint 1):
-At this stage of development, the following features have been implemented:
-  - A virtual environment with a table and a book placed on it.
-  - VR controller integration.
-  - Basic interaction with the book.
-  - Page flipping functionality with controller triggers.
+---
 
-Limitations:
-  - No page flip animations yet.
-  - No dynamic or readable text content implemented (other than page number)
-  - Interactions is functional but not complete/polished.
-  - Limited environment interactions.
+## Project Resources
+- **GitHub Repository:** https://github.com/csu-hci-projects/SP26-Immersive-Index
+- **Project Report (Overleaf):** https://www.overleaf.com/read/wffwsfgvcshq#ad1468  
 
-Controls:
-  - VR Controllers: Used to interact with the book
-  - Hand Controllers: Not yet implemented, but will be a feature by the next checkpoint
-  - Grab/Trigger Input: Allows the user to interact with the book.
-  - Page Flip Interactions: User can flip pages using controller triggers.
+---
 
-Notes:
-This is an early stage prototype of the final project. We only have core interaction mechanics set up, but will update the environment with more functionality and better user experience in the future.
+## Overview
+Immersive Index is a virtual reality (VR) application designed to simulate a natural and engaging reading experience. Users can interact with a virtual book in a 3D environment, mimicking real-world actions such as picking up a book, flipping pages, and reading content.
 
-link to overleaf: https://www.overleaf.com/read/wffwsfgvcshq#ad1468
+The goal of this project is to explore whether VR can provide a more immersive and less distracting alternative to traditional reading methods, while maintaining usability and comfort.
+
+---
+
+## Final Features
+The completed project includes:
+
+- Fully interactive virtual book  
+- Hand tracking support for natural interaction  
+- VR controller support as an alternative input method  
+- Page flipping using triggers, joystick, or swipe gestures  
+- Readable page content implemented using image-based text rendering  
+- Immersive 3D environment for focused reading  
+- Smooth and responsive interaction system  
+
+---
+
+## Controls / How to Use
+
+### VR Setup
+1. Launch the application in Unity or run the built executable.  
+2. Connect your VR headset (e.g., Oculus/Meta Quest or compatible device).  
+3. Ensure controllers are enabled.  
+
+### Interactions
+- **Grab Book:** Use grip/trigger to pick up the book
+- **Open Book:** While holding the book, press A on the right controller to open it
+- **Flip Pages:**  
+  - Controller trigger or joystick  
+  - Controller swipe gesture
+- **Read Content:** View text on pages rendered as images  
+
+---
+
+## Notes for Grading
+- The project only demonstrates **controller-based** tracking, as we had issues implementing **hand-tracking**.  
+- Text inside the book is implemented as **image assets** to ensure clarity and performance in VR.  
+- The focus of the project is on **user interaction, immersion, and usability**, rather than complex animations.  
+- All major functionality shown in the demo video is fully implemented and working.  
+
+---
+
+## Challenges & Improvements
+
+### Challenges
+- Integrating VR input systems (controllers), but ultimately removed hand tracking as it proved to be difficult to implement.
+- Designing intuitive page interaction mechanics  
+- Optimizing readability of text in a VR environment  
+
+### Future Improvements
+- Improved animation effects for opening the book
+- Dynamic text rendering instead of static images  
+- Expanded environments and multiple books  
+
+---
+
+## Project Purpose
+This project evaluates how VR can enhance reading experiences by:
+- Reducing distractions  
+- Increasing immersion  
+- Providing interactive engagement with content  
+
+---
+
+## Submission Notes
+This README includes:
+- Links to all required videos  
+- Project documentation  
+- Instructions for use  
+- Explanation of features and implementation  
