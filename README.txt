@@ -9,8 +9,9 @@
 ---
 
 ## Project Videos
-- Demo Video: https://youtu.be/sbLUApfl3EE  
-- Programming / Code Walkthrough:** https://youtu.be/kwjAf46-Euc  
+- Short Video: https://youtu.be/hclqCy5t0VU
+- Presentation Video: https://youtu.be/RIBt5Q_sFKk
+- Programming Video: https://youtu.be/4tnlNkLUp0k
 
 ---
 
