@@ -1,4 +1,4 @@
-# Immersive Index – VR Reading Experience
+#Immersive Index – VR Reading Experience
 
 ## Team Members
 - Samith Varma Nagaraju  
