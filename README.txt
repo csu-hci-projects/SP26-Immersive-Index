@@ -17,7 +17,7 @@
 
 ## Project Resources
 - GitHub Repository: https://github.com/csu-hci-projects/SP26-Immersive-Index
-- Project Report (Overleaf): https://www.overleaf.com/read/wffwsfgvcshq#ad1468  
+- Project Report (Overleaf): https://www.overleaf.com/project/69fabf9aac22b3ad79c6846f  
 
 ---
 
